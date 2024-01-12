@@ -25,9 +25,6 @@ import MultiSendContract_V1_4_1_Ethers from './MultiSend/v1.4.1/MultiSendContrac
 import MultiSendCallOnlyContract_V1_3_0_Ethers from './MultiSendCallOnly/v1.3.0/MultiSendCallOnlyContract_V1_3_0_Ethers'
 import MultiSendCallOnlyContract_V1_4_1_Ethers from './MultiSendCallOnly/v1.4.1/MultiSendCallOnlyContract_V1_4_1_Ethers'
 import SafeContract_V1_0_0_Ethers from './Safe/v1.0.0/SafeContract_V1_0_0_Ethers'
-import SafeProxyFactoryContract_V1_0_0_Ethers from './SafeProxyFactory/v1.0.0/SafeProxyFactoryContract_V1_0_0_Ethers'
-import SafeProxyFactoryContract_V1_1_1_Ethers from './SafeProxyFactory/v1.1.1/SafeProxyFactoryContract_V1_1_1_Ethers'
-import SafeProxyFactoryContract_V1_4_1_Ethers from './SafeProxyFactory/v1.4.1/SafeProxyFactoryContract_V1_4_1_Ethers'
 import SignMessageLibContract_V1_3_0_Ethers from './SignMessageLib/v1.3.0/SignMessageLibContract_V1_3_0_Ethers'
 import SignMessageLibContract_V1_4_1_Ethers from './SignMessageLib/v1.4.1/SignMessageLibContract_V1_4_1_Ethers'
 import SimulateTxAccessorContract_V1_3_0_Ethers from './SimulateTxAccessor/v1.3.0/SimulateTxAccessorContract_V1_3_0_Ethers'
@@ -35,6 +32,7 @@ import SimulateTxAccessorContract_V1_4_1_Ethers from './SimulateTxAccessor/v1.4.
 import SafeContract_v1_1_1_Ethers from '@safe-global/protocol-kit/adapters/ethers/contracts/Safe/v1.1.1/SafeContract_v1_1_1_Ethers'
 import SafeContract_v1_2_0_Ethers from '@safe-global/protocol-kit/adapters/ethers/contracts/Safe/v1.2.0/SafeContract_v1_2_0_Ethers'
 import SafeContract_v1_3_0_Ethers from '@safe-global/protocol-kit/adapters/ethers/contracts/Safe/v1.3.0/SafeContract_v1_3_0_Ethers'
+import SafeProxyFactory_v1_0_0_Ethers from '@safe-global/protocol-kit/adapters/ethers/contracts/SafeProxyFactory/v1.0.0/safeProxyFactory_v1_0_0_Ethers'
 import SafeProxyFactory_v1_1_1_Ethers from '@safe-global/protocol-kit/adapters/ethers/contracts/SafeProxyFactory/v1.1.1/safeProxyFactory_v1_1_1_Ethers'
 import SafeProxyFactory_v1_3_0_Ethers from '@safe-global/protocol-kit/adapters/ethers/contracts/SafeProxyFactory/v1.3.0/safeProxyFactory_v1_3_0_Ethers'
 import SafeProxyFactory_v1_4_1_Ethers from '@safe-global/protocol-kit/adapters/ethers/contracts/SafeProxyFactory/v1.4.1/safeProxyFactory_v1_4_1_Ethers'
@@ -44,6 +42,7 @@ import { SafeContract_v1_1_1_Abi } from '@safe-global/protocol-kit/contracts/Abi
 import { SafeContract_v1_2_0_Abi } from '@safe-global/protocol-kit/contracts/AbiType/Safe/v1.2.0/SafeContract_v1_2_0'
 import { SafeContract_v1_3_0_Abi } from '@safe-global/protocol-kit/contracts/AbiType/Safe/v1.3.0/SafeContract_v1_3_0'
 import { SafeContract_v1_4_1_Abi } from '@safe-global/protocol-kit/contracts/AbiType/Safe/v1.4.1/SafeContract_v1_4_1'
+import { SafeProxyFactoryContract_v1_0_0_Abi } from '@safe-global/protocol-kit/contracts/AbiType/SafeProxyFactory/v1.0.0/SafeProxyFactoryContract_v1_0_0'
 import { SafeProxyFactoryContract_v1_1_1_Abi } from '@safe-global/protocol-kit/contracts/AbiType/SafeProxyFactory/v1.1.1/SafeProxyFactoryContract_v1_1_1'
 import { SafeProxyFactoryContract_v1_3_0_Abi } from '@safe-global/protocol-kit/contracts/AbiType/SafeProxyFactory/v1.3.0/SafeProxyFactoryContract_v1_3_0'
 import { SafeProxyFactoryContract_v1_4_1_Abi } from '@safe-global/protocol-kit/contracts/AbiType/SafeProxyFactory/v1.4.1/SafeProxyFactoryContract_v1_4_1'
@@ -192,7 +191,7 @@ export async function getSafeProxyFactoryContractInstance(
   signerOrProvider: AbstractSigner | Provider,
   ethersAdapter: EthersAdapter,
   customContractAbi?: AbiItem | AbiItem[] | undefined
-): Promise<SafeProxyFactoryContract_V1_0_0_Ethers> {
+) {
   const chainId = await ethersAdapter.getChainId()
   let safeProxyFactoryContract
   switch (safeVersion) {
@@ -229,8 +228,15 @@ export async function getSafeProxyFactoryContractInstance(
       )
       return safeProxyFactoryContract.mapToTypechainContract() // remove this mapper after remove typechain
     case '1.0.0':
-      safeProxyFactoryContract = SafeProxyFactory_V1_0_0.connect(contractAddress, signerOrProvider)
-      return new SafeProxyFactoryContract_V1_0_0_Ethers(safeProxyFactoryContract)
+      safeProxyFactoryContract = new SafeProxyFactory_v1_0_0_Ethers(
+        chainId,
+        ethersAdapter,
+        contractAddress,
+        // TODO: Remove this unknown after remove Typechain
+        customContractAbi as unknown as SafeProxyFactoryContract_v1_0_0_Abi,
+        signerOrProvider
+      )
+      return safeProxyFactoryContract.mapToTypechainContract() // remove this mapper after remove typechain
     default:
       throw new Error('Invalid Safe version')
   }
