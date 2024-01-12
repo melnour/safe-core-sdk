@@ -119,7 +119,8 @@ class EthersAdapter implements EthAdapter {
   async getSafeProxyFactoryContract({
     safeVersion,
     singletonDeployment,
-    customContractAddress
+    customContractAddress,
+    customContractAbi
   }: GetContractProps): Promise<SafeProxyFactoryEthersContract> {
     const chainId = await this.getChainId()
     const contractAddress =
@@ -128,7 +129,13 @@ class EthersAdapter implements EthAdapter {
       throw new Error('Invalid SafeProxyFactory contract address')
     }
     const signerOrProvider = this.#signer || this.#provider
-    return getSafeProxyFactoryContractInstance(safeVersion, contractAddress, signerOrProvider)
+    return getSafeProxyFactoryContractInstance(
+      safeVersion,
+      contractAddress,
+      signerOrProvider,
+      this,
+      customContractAbi
+    )
   }
 
   async getMultiSendContract({
