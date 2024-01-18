@@ -23,7 +23,7 @@ import {
   getSafeSingletonDeployment,
   getSignMessageLibDeployment,
   getSimulateTxAccessorDeployment
-} from '@safe-global/safe-deployments'
+} from '@cryptiq-web3/safe-deployments'
 import { safeDeploymentsL1ChainIds, safeDeploymentsVersions } from './config'
 
 interface GetContractInstanceProps {

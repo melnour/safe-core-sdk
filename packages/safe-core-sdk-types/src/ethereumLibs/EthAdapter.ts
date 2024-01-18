@@ -11,7 +11,7 @@ import {
   SafeTransactionEIP712Args,
   SafeVersion
 } from '@safe-global/safe-core-sdk-types/types'
-import { SingletonDeployment } from '@safe-global/safe-deployments'
+import { SingletonDeployment } from '@cryptiq-web3/safe-deployments'
 import { AbiItem } from 'web3-utils'
 
 export interface EthAdapterTransaction {

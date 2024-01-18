@@ -157,7 +157,23 @@ export const networks: NetworkShortName[] = [
   { chainId: 1666600000n, shortName: 'hmy-s0' },
   { chainId: 1666700000n, shortName: 'hmy-b-s0' },
   { chainId: 11297108099n, shortName: 'tpalm' },
-  { chainId: 11297108109n, shortName: 'palm' }
+  { chainId: 11297108109n, shortName: 'palm' },
+  { chainId: 71n, shortName: 'conflux-testnet' },
+  { chainId: 109n, shortName: 'shibarium' },
+  { chainId: 169n, shortName: 'manta' },
+  { chainId: 255n, shortName: 'kroma' },
+  { chainId: 424n, shortName: 'pgn' },
+  { chainId: 1030n, shortName: 'conflux' },
+  { chainId: 1663n, shortName: 'horizen-testnet' },
+  { chainId: 2358n, shortName: 'kroma-testnet' },
+  { chainId: 4337n, shortName: 'beam' },
+  { chainId: 7332n, shortName: 'horizen' },
+  { chainId: 10243n, shortName: 'arthera' },
+  { chainId: 13337n, shortName: 'beam-testnet' },
+  { chainId: 34443n, shortName: 'mode' },
+  { chainId: 58008n, shortName: 'pgn-sepolia' },
+  { chainId: 222000222n, shortName: 'meld-testnet' },
+  { chainId: 333000333n, shortName: 'meld' }
 ]
 
 if (process.env.TEST_NETWORK === 'hardhat') {

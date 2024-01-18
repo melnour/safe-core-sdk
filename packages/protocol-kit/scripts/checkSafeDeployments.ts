@@ -1,5 +1,5 @@
 import { SafeVersion } from '@safe-global/safe-core-sdk-types'
-import { DeploymentFilter, getSafeSingletonDeployment } from '@safe-global/safe-deployments'
+import { DeploymentFilter, getSafeSingletonDeployment } from '@cryptiq-web3/safe-deployments'
 import { networks } from '../src/utils/eip-3770/config'
 
 // TO-DO: The SDK needs to take into account all the networks where the different versions of the Safe contracts are deployed, not just the ones for v1.3.0 contracts

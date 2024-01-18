@@ -1,5 +1,5 @@
 {
-  "name": "safe-core-sdk",
+  "name": "@cryptiq-web3/safe-core-sdk",
   "private": true,
   "scripts": {
     "clean": "lerna clean",

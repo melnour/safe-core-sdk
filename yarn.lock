@@ -358,6 +358,13 @@
     "@chainsafe/persistent-merkle-tree" "^0.4.2"
     case "^1.6.3"
 
+"@cryptiq-web3/safe-deployments@^1.30.1":
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/@cryptiq-web3/safe-deployments/-/safe-deployments-1.30.1.tgz#7e0940a71b204fab62f891113700ecead75ea047"
+  integrity sha512-O0EUSiSRjvxabzVuha65PKZs/xP84ZzF1UkKHpBizLIBKyKsFNxUWyDV0Ow3fgXRVBWHpUHpBt0TqwkeH/IoKQ==
+  dependencies:
+    semver "^7.3.7"
+
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
   resolved "https://registry.npmjs.org/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz"
@@ -1944,13 +1951,6 @@
   version "1.4.1"
   resolved "https://registry.npmjs.org/@safe-global/safe-contracts/-/safe-contracts-1.4.1.tgz"
   integrity sha512-fP1jewywSwsIniM04NsqPyVRFKPMAuirC3ftA/TA4X3Zc5EnwQp/UCJUU2PL/37/z/jMo8UUaJ+pnFNWmMU7dQ==
-
-"@safe-global/safe-deployments@^1.28.0":
-  version "1.28.0"
-  resolved "https://registry.npmjs.org/@safe-global/safe-deployments/-/safe-deployments-1.28.0.tgz"
-  integrity sha512-zWn55unMucN3i3awjDA0XxH9BzGNHyC/qCbuISBh0GMZP/q+VCxERAOEO4OqwyGaxk6sSAzP4usGdmgz2y2svg==
-  dependencies:
-    semver "^7.3.7"
 
 "@scure/base@^1.1.3", "@scure/base@~1.1.0":
   version "1.1.3"
